@@ -4,14 +4,15 @@ import model.Phone;
 import model.Tablet;
 import model.android.AndroidPhone;
 import model.android.AndroidTablet;
+import model.system.Android;
 
-public class AndroidFactory implements DeviceFactory {
+public class AndroidFactory implements DeviceFactory<Android> {
 
-  public Phone createPhone() {
+  public Phone<Android> createPhone() {
     return new AndroidPhone();
   }
 
-	public Tablet createTablet() {
+  public Tablet<Android> createTablet() {
     return new AndroidTablet();
   }
 }

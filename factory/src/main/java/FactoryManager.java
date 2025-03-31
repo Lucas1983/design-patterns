@@ -2,6 +2,7 @@ import factory.AndroidFactory;
 import factory.DeviceFactory;
 import factory.OsFactory;
 import factory.WindowsFactory;
+import model.system.System;
 
 public class FactoryManager {
 
@@ -14,17 +15,12 @@ public class FactoryManager {
     return instance;
   }
 
-  public DeviceFactory getFactory(SystemType type) {
+  public DeviceFactory<? extends System> getFactory(SystemType type) {
 
-    switch (type) {
-      case ANDROID:
-        return new AndroidFactory();
-      case WINDOWS:
-        return new WindowsFactory();
-      case OS:
-        return new OsFactory();
-      default:
-        throw new IllegalArgumentException("Unknown system type: " + type);
-    }
+    return switch (type) {
+      case ANDROID -> new AndroidFactory();
+      case WINDOWS -> new WindowsFactory();
+      case OS -> new OsFactory();
+    };
   }
 }

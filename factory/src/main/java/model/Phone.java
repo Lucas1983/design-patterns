@@ -1,3 +1,5 @@
 package model;
 
-public interface Phone {}
+import model.system.System;
+
+public interface Phone<S extends System> extends Device{}

@@ -1,3 +1,5 @@
 package model;
 
-public interface Tablet {}
+import model.system.System;
+
+public interface Tablet<S extends System> extends Device{}

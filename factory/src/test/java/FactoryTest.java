@@ -1,3 +1,4 @@
+import factory.DeviceFactory;
 import model.Phone;
 import model.Tablet;
 import model.android.AndroidPhone;
@@ -16,12 +17,12 @@ public class FactoryTest {
 
     FactoryManager manager = FactoryManager.getInstance();
 
-    var factory = manager.getFactory(SystemType.WINDOWS);
+    DeviceFactory<?> factory = manager.getFactory(SystemType.WINDOWS);
 
-    Phone phone = factory.createPhone();
+    Phone<?> phone = factory.createPhone();
     Assertions.assertInstanceOf(WindowsPhone.class, phone);
 
-    Tablet tablet = factory.createTablet();
+    Tablet<?> tablet = factory.createTablet();
     Assertions.assertInstanceOf(WindowsTablet.class, tablet);
   }
 
@@ -30,12 +31,12 @@ public class FactoryTest {
 
     FactoryManager manager = FactoryManager.getInstance();
 
-    var factory = manager.getFactory(SystemType.OS);
+    DeviceFactory<?> factory = manager.getFactory(SystemType.OS);
 
-    Phone phone = factory.createPhone();
+    Phone<?> phone = factory.createPhone();
     Assertions.assertInstanceOf(OsPhone.class, phone);
 
-    Tablet tablet = factory.createTablet();
+    Tablet<?> tablet = factory.createTablet();
     Assertions.assertInstanceOf(OsTablet.class, tablet);
   }
 
@@ -44,12 +45,12 @@ public class FactoryTest {
 
     FactoryManager manager = FactoryManager.getInstance();
 
-    var factory = manager.getFactory(SystemType.ANDROID);
+    DeviceFactory<?> factory = manager.getFactory(SystemType.ANDROID);
 
-    Phone phone = factory.createPhone();
+    Phone<?> phone = factory.createPhone();
     Assertions.assertInstanceOf(AndroidPhone.class, phone);
 
-    Tablet tablet = factory.createTablet();
+    Tablet<?> tablet = factory.createTablet();
     Assertions.assertInstanceOf(AndroidTablet.class, tablet);
   }
 }
